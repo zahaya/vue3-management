@@ -2,19 +2,11 @@
   <el-form :model="loginForm" class="login-container">
     <h3>系统登录</h3>
     <el-form-item>
-      <el-input
-        type="input"
-        placeholder="请输入账号"
-        v-model="loginForm.username"
-      >
+      <el-input type="input" placeholder="请输入账号" v-model="loginForm.username">
       </el-input>
     </el-form-item>
     <el-form-item>
-      <el-input
-        type="password"
-        placeholder="请输入密码"
-        v-model="loginForm.password"
-      >
+      <el-input type="password" placeholder="请输入密码" v-model="loginForm.password">
       </el-input>
     </el-form-item>
     <el-form-item>
@@ -67,11 +59,13 @@ export default {
   border: 1px solid #eaeaea;
   border-radius: 15px;
   box-shadow: 0 0 25px #cacaca;
+
   h3 {
     margin-bottom: 20px;
     text-align: center;
     color: #505450;
   }
+
   :deep(.el-form-item__content) {
     justify-content: center;
   }

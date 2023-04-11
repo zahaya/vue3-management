@@ -25,7 +25,7 @@ export default {
     CommonAside,
     CommonTab,
   },
-  setup() {},
+  setup() { },
 };
 </script>
 
@@ -34,17 +34,20 @@ export default {
   flex-wrap: wrap;
   align-items: flex-start;
 }
+
 .common-layout {
   height: 100%;
+
   .lay-container {
     flex-wrap: nowrap;
   }
-  & > .el-container {
+
+  &>.el-container {
     height: 100%;
-    & > .el-aside {
+
+    &>.el-aside {
       height: 100%;
       background-color: #545c64;
     }
   }
-}
-</style>
+}</style>

@@ -1,7 +1,12 @@
 import axios from "axios";
 
+// const http = axios.create({
+//   baseURL: '/api',    //请求地址前缀
+//   timeout: 10000  //超时时间
+// })
+
 const http = axios.create({
-  baseURL: '/api',    //请求地址前缀
+  baseURL: 'http://localhost:8081/api',    //请求地址前缀
   timeout: 10000  //超时时间
 })
 

@@ -17,29 +17,15 @@
 
       <el-card shadow="hover" style="margin-top: 20px; height: 450px">
         <el-table :data="tableData">
-          <el-table-column
-            v-for="(val, key) in tableLabel"
-            :key="key"
-            :prop="key"
-            :label="val"
-          >
+          <el-table-column v-for="(val, key) in tableLabel" :key="key" :prop="key" :label="val">
           </el-table-column>
         </el-table>
       </el-card>
     </el-col>
     <el-col :span="16">
       <div class="num">
-        <el-card
-          :body-style="{ display: 'flex', padding: 0 }"
-          v-for="item in countData"
-          :key="item.name"
-          shadow="hover"
-        >
-          <component
-            class="icons"
-            :is="item.icon"
-            :style="{ background: item.color }"
-          ></component>
+        <el-card :body-style="{ display: 'flex', padding: 0 }" v-for="item in countData" :key="item.name" shadow="hover">
+          <component class="icons" :is="item.icon" :style="{ background: item.color }"></component>
           <div class="details">
             <p class="details-num">¥ {{ item.value }}</p>
             <p class="details-txt">{{ item.name }}</p>
@@ -54,8 +40,8 @@
           <div style="height: 260px" ref="userechart"></div>
         </el-card>
         <el-card style="height: 260px" shadow="hover">
-          <div style="height: 260px" ref="videoechart"></div
-        ></el-card>
+          <div style="height: 260px" ref="videoechart"></div>
+        </el-card>
       </div>
     </el-col>
   </el-row>
@@ -69,7 +55,6 @@ import {
   ref,
   getCurrentInstance,
 } from "vue";
-import axios from "axios";
 import { getData, getCountData, getEchartsData } from "../../api/api";
 import * as echarts from "echarts";
 
@@ -339,6 +324,7 @@ export default {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
+
     .el-card {
       width: 48%;
     }

@@ -1,30 +1,16 @@
 <template>
   <el-aside :width="$store.state.isCollapse ? '180px' : '64px'">
-    <el-menu
-      class="el-menu-vertical-demo"
-      background-color="#545c64"
-      text-color="#fff"
-      :collapse="!$store.state.isCollapse"
-      :collapse-transition="false"
-    >
+    <el-menu class="el-menu-vertical-demo" background-color="#545c64" text-color="#fff"
+      :collapse="!$store.state.isCollapse" :collapse-transition="false">
       <h3>{{ !$store.state.isCollapse ? "后台" : "通用后台管理系统" }}</h3>
       <!-- 函数需要执行noChildren() -->
-      <el-menu-item
-        :index="item.path"
-        v-for="item in noChildren()"
-        :key="item.path"
-        @click="clickMenu(item)"
-      >
+      <el-menu-item :index="item.path" v-for="item in noChildren()" :key="item.path" @click="clickMenu(item)">
         <el-icon>
           <component class="icons" :is="item.icon"></component>
         </el-icon>
         <span>{{ item.label }}</span>
       </el-menu-item>
-      <el-sub-menu
-        :index="item.label"
-        v-for="item in hasChildren()"
-        :key="item.label"
-      >
+      <el-sub-menu :index="item.label" v-for="item in hasChildren()" :key="item.label">
         <template #title>
           <el-icon>
             <component class="icons" :is="item.icon"></component>
@@ -32,17 +18,12 @@
           <span>{{ item.label }}</span>
         </template>
         <el-menu-item-group>
-          <el-menu-item
-            :index="subItem.path"
-            v-for="(subItem, subIndex) in item.children"
-            :key="subIndex"
-            @click="clickMenu(subItem)"
-          >
+          <el-menu-item :index="subItem.path" v-for="(subItem, subIndex) in item.children" :key="subIndex"
+            @click="clickMenu(subItem)">
             <el-icon>
               <component class="icons" :is="subItem.icon"></component>
             </el-icon>
-            <span>{{ subItem.label }}</span></el-menu-item
-          >
+            <span>{{ subItem.label }}</span></el-menu-item>
         </el-menu-item-group>
       </el-sub-menu>
     </el-menu>
@@ -89,6 +70,7 @@ export default {
 .el-menu {
   height: 100vh;
   border-right: none;
+
   h3 {
     text-align: center;
     line-height: 48px;

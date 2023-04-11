@@ -3,12 +3,7 @@
     <el-button type="primary" @click="handleAdd">+新增</el-button>
     <el-form :inline="true" :model="formInline">
       <el-form-item label="请输入">
-        <el-input
-          v-model="formInline.keyword"
-          placeholder="请输入用户名"
-          clearable
-          @clear="clearUser"
-        />
+        <el-input v-model="formInline.keyword" placeholder="请输入用户名" clearable @clear="clearUser" />
       </el-form-item>
 
       <el-form-item>
@@ -19,40 +14,20 @@
 
   <div class="table">
     <el-table :data="tabList" style="width: 100%" height="500px">
-      <el-table-column
-        v-for="(item, index) in tableLabel"
-        :key="item.prop"
-        :label="item.label"
-        :prop="item.prop"
-        :width="item.width ? item.width : 125"
-      />
+      <el-table-column v-for="(item, index) in tableLabel" :key="item.prop" :label="item.label" :prop="item.prop"
+        :width="item.width ? item.width : 125" />
       <el-table-column fixed="right" label="操作" min-width="180">
         <template #default="scope">
-          <el-button type="primary" size="small" @click="handleEdit(scope.row)"
-            >编辑</el-button
-          >
-          <el-button type="danger" size="small" @click="handleDelete(scope.row)"
-            >删除</el-button
-          >
+          <el-button type="primary" size="small" @click="handleEdit(scope.row)">编辑</el-button>
+          <el-button type="danger" size="small" @click="handleDelete(scope.row)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
-    <el-pagination
-      small
-      background
-      layout="prev, pager, next"
-      :total="config.total"
-      class="mt-4 pager"
-      @current-change="changePage"
-    />
+    <el-pagination small background layout="prev, pager, next" :total="config.total" class="mt-4 pager"
+      @current-change="changePage" />
   </div>
 
-  <el-dialog
-    v-model="dialogVisible"
-    :title="action === 'add' ? '新增用户' : '编辑用户'"
-    width="40%"
-    :before-close="handleClose"
-  >
+  <el-dialog v-model="dialogVisible" :title="action === 'add' ? '新增用户' : '编辑用户'" width="40%" :before-close="handleClose">
     <el-form :inline="true" :model="formUser" ref="userForm" :rules="rules">
       <el-row>
         <el-col :span="12">
@@ -80,13 +55,7 @@
 
         <el-col :span="12">
           <el-form-item label="出生日期" prop="birth">
-            <el-date-picker
-              v-model="formUser.birth"
-              type="date"
-              label="出生日期"
-              placeholder="请输入出生日期"
-              style="width: 100%"
-            />
+            <el-date-picker v-model="formUser.birth" type="date" label="出生日期" placeholder="请输入出生日期" style="width: 100%" />
           </el-form-item>
         </el-col>
       </el-row>
@@ -175,6 +144,7 @@ export default {
     });
     const handleSearch = () => {
       config.name = formInline.keyword;
+      console.log(config.name);
       getUserData();
     };
 
@@ -227,7 +197,9 @@ export default {
           if (action.value === "add") {
             formUser.birth = timeFormat(formUser.birth);
             addUser(formUser).then(({ data: res }) => {
+              console.log(res);
               if (res.code === 200) {
+
                 dialogVisible.value = false;
                 proxy.$refs.userForm.resetFields();
                 getUserData();
@@ -368,9 +340,11 @@ export default {
   display: flex;
   justify-content: space-between;
 }
+
 .table {
   position: relative;
   height: 520px;
+
   .pager {
     position: absolute;
     right: 0px;
